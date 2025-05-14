@@ -122,9 +122,11 @@ public class PythonBuffer {
         Formatter formatter = new Formatter(buffer);
         formatter.format(format, args);
 
-        // Indent the line:
-        for (int i = 0; i < level; i++) {
-            buffer.insert(0, "    ");
+        // Indent the line if not empty:
+        if (buffer.length() > 0) {
+            for (int i = 0; i < level; i++) {
+                buffer.insert(0, "    ");
+            }
         }
 
         // Add the line to the list:
@@ -137,8 +139,10 @@ public class PythonBuffer {
     public void addRawLine(String line) {
         StringBuilder buffer = new StringBuilder(line);
         // Indent the line:
-        for (int i = 0; i < level; i++) {
-            buffer.insert(0, "    ");
+        if (buffer.length() > 0) {
+            for (int i = 0; i < level; i++) {
+                buffer.insert(0, "    ");
+            }
         }
 
         // Add the line to the list:
